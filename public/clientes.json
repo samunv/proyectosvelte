@@ -1,0 +1,38 @@
+[
+    {
+      "nombre": "Samuel",
+      "edad": 19,
+      "pais": "España",
+      "foto": "https://cdn-icons-png.flaticon.com/512/711/711769.png"
+    },
+    {
+      "nombre": "Ana",
+      "edad": 22,
+      "pais": "México",
+      "foto": "https://cdn-icons-png.flaticon.com/512/711/711769.png"
+    },
+    {
+      "nombre": "Luis",
+      "edad": 25,
+      "pais": "Argentina",
+      "foto": "https://cdn-icons-png.flaticon.com/512/711/711769.png"
+    },
+    {
+      "nombre": "Carlos",
+      "edad": 30,
+      "pais": "Chile",
+      "foto": "https://cdn-icons-png.flaticon.com/512/711/711769.png"
+    },
+    {
+      "nombre": "Jorge",
+      "edad": 22,
+      "pais": "Estados Unidos",
+      "foto": "https://cdn-icons-png.flaticon.com/512/711/711769.png"
+    },
+    {
+      "nombre": "prueba",
+      "edad": 22,
+      "pais": "Estados Unidos",
+      "foto": "https://cdn-icons-png.flaticon.com/512/711/711769.png"
+    }
+  ]
