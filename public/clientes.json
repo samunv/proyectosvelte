@@ -1,14 +1,14 @@
 [
+  {
+    "nombre": "Paula",
+    "edad": 19,
+    "pais": "España",
+    "foto": "https://cdn-icons-png.flaticon.com/512/711/711769.png"
+  },
     {
       "nombre": "Samuel",
       "edad": 19,
       "pais": "España",
-      "foto": "https://cdn-icons-png.flaticon.com/512/711/711769.png"
-    },
-    {
-      "nombre": "Ana",
-      "edad": 22,
-      "pais": "México",
       "foto": "https://cdn-icons-png.flaticon.com/512/711/711769.png"
     },
     {

@@ -1,5 +1,5 @@
 <script>
-  let clientes = [];
+  let clientes = JSON.parse(sessionStorage.getItem("clientes")) || []; // Inicializamos correctamente como array
   let cargando = true;
   let valor = "";
   let clientesEliminados =
@@ -36,12 +36,7 @@
   let ventanaActiva = false;
   let overlayActivo = false;
   let clienteSeleccionado = null;
-  let flotanteActivo = false;
-
-  function abrirFlotante(){
-    flotanteActivo = true;
-  }
-
+  let ventanaEditarActiva = false;
 
   function mostrarInfo(cliente) {
     clienteSeleccionado = cliente;
@@ -63,16 +58,44 @@
     sessionStorage.setItem(
       "clientesEliminados",
       JSON.stringify(clientesEliminados)
-    
     );
 
-    
     // Filtrar el cliente a eliminar (sin mutar directamente el array original)
     clientes = clientes.filter((cliente) => cliente.nombre !== clienteNombre);
 
     console.log("Clientes después de eliminar:", clientes); // Verifica el array después de la eliminación
-    
+
     window.location.reload();
+  }
+
+  let nombreEditado = "";
+  let edadEditado = "";
+  let paisEditado = "";
+
+  function actualizarCliente(e, cliente) {
+    e.preventDefault();
+    // Actualizamos el cliente con los nuevos valores
+    const indice = clientes.findIndex((c) => c.nombre === cliente.nombre);
+
+    if (indice !== -1) {
+      // Actualizamos los valores del cliente en el array
+      clientes[indice].nombre = nombreEditado;
+      clientes[indice].edad = edadEditado;
+      clientes[indice].pais = paisEditado;
+
+      // Guardar el array actualizado en sessionStorage
+      sessionStorage.setItem("clientes", JSON.stringify(clientes));
+
+      // Actualizar la vista sin recargar la página
+      ventanaEditarActiva = false; // Cerrar la ventana de edición
+      clienteSeleccionado = null; // Limpiar el cliente seleccionado
+
+      // Aquí puedes realizar una actualización de la interfaz sin recargar la página
+      // Esto asegurará que el cliente actualizado se muestre en la interfaz
+      console.log("Cliente actualizado:", clientes[indice]);
+    } else {
+      console.error("Cliente no encontrado");
+    }
   }
 </script>
 
@@ -89,17 +112,7 @@
     placeholder="Buscar..."
     id="buscador-input"
   />
-  <img
-    src="/img/tune_24dp_CDCDCD_FILL0_wght400_GRAD0_opsz24.png"
-    alt=""
-    width="24"
-    height="24"
-    id="icono-filtros"
-    on:click={()=> abrirFlotante()}
-  />
 </div>
-
-
 
 <div id="contenedor-principal">
   {#if cargando}
@@ -117,10 +130,6 @@
         </div>
 
         <div class="iconos">
-          <img
-            src="/img/edit_24dp_CDCDCD_FILL0_wght400_GRAD0_opsz24.png"
-            alt="Editar"
-          />
           <img
             src="/img/delete_24dp_EA3323_FILL0_wght400_GRAD0_opsz24 (1).png"
             alt="Eliminar"
@@ -143,15 +152,7 @@
   </div>
 {/if}
 
-{#if flotanteActivo}
-  <div id="flotante" class="flotante-activo">
-    <h4>Filtros</h4>
-    <p>Países</p>
-    <p>Edades</p>
-  </div>
-{/if}
-
 <div
   id="overlay"
-  class={overlayActivo ? "overlay-activo" : "overlay-inactivo"}
+  class={overlayActivo ? "overlay-activo" : "o verlay-inactivo"}
 ></div>
